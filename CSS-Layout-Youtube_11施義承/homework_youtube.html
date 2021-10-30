@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "微軟正黑體";
+    }
+
+    body::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    body::-webkit-scrollbar-thumb {
+      border-radius: 100px;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      background: lightgrey;
+    }
+
+    body::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      border-radius: 0;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+      border-radius: 100px;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      background: lightgrey;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      border-radius: 0;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .topbar1 {
+      width: 100%;
+      height: 56px;
+      background: white;
+      border-bottom: 1px solid lightgrey;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .topbar1icon {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      transform: translate(-50%, -50%);
+    }
+
+    .topbar1icon1 {
+      width: 90px;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 120px;
+      transform: translate(-50%, -50%);
+    }
+
+    .searchbar {
+      width: 550px;
+      height: 30px;
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      left: 750px;
+      transform: translate(-50%, -50%);
+    }
+
+    .searchbutton {
+      width: 70px;
+      height: 32px;
+      border: 0.5px solid grey;
+      background: lightgrey;
+      position: absolute;
+      top: 50%;
+      left: 1062px;
+      transform: translate(-50%, -50%);
+    }
+
+    .searchicon {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .voice {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 1130px;
+      transform: translate(-50%, -50%);
+    }
+
+    .menu1 {
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: 50%;
+      left: 90%;
+      transform: translate(-50%, -50%);
+    }
+
+    .menu2 {
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: 50%;
+      left: 92.5%;
+      transform: translate(-50%, -50%);
+    }
+
+    .topbar2 {
+      width: 100%;
+      height: 56px;
+      background: white;
+      border-bottom: 1px solid lightgrey;
+      position: fixed;
+      top: 57px;
+      left: 240px;
+      text-align: center;
+    }
+
+    .topbar2 span {
+      display: inline-block;
+      margin: 5px;
+      padding: 5px 15px 5px 15px;
+      font-size: 14px;
+      background: rgb(240, 240, 240);
+      border: 0.5px solid rgb(220, 220, 220);
+      border-radius: 17px;
+      position: relative;
+      top: 7px;
+      left: 0;
+    }
+
+    .sidebar {
+      width: 13%;
+      height: calc(100% - 56px);
+      padding: 0;
+      background: white;
+      border-right: 1px solid lightgrey;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      overflow: auto;
+    }
+
+    .sidebarblock {
+      width: 100%;
+      margin: 0;
+    }
+
+    .sidebarblock1 {
+      width: calc(100% - 2rem);
+      margin: 0;
+      padding: 10px 0 10px 2rem;
+      font-size: 14px;
+    }
+
+    .sidetitleblock {
+      width: 100%;
+      height: 50px;
+      position: relative;
+    }
+
+    .copyright {
+      width: calc(100% - 40px);
+      margin: 20px;
+      font-size: 14px;
+    }
+
+    .sidebarlist {
+      width: calc(100% - 15px);
+      height: 40px;
+      position: relative;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 5px 0 5px 15px;
+    }
+
+    .sidebarlist:hover {
+      background: #f2f2f2;
+      cursor: pointer;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      float: left;
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      transform: translate(-50%, -50%);
+
+    }
+
+    .sidetitle {
+      width: 120px;
+      height: 20px;
+      font-size: 14px;
+      position: absolute;
+      top: 50%;
+      left: 130px;
+      transform: translate(-50%, -50%);
+    }
+
+    .sidetitle1 {
+      width: 120px;
+      height: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      position: absolute;
+      top: 50%;
+      left: 90px;
+      transform: translate(-50%, -50%);
+    }
+
+    .login {
+      width: 61px;
+      height: 24px;
+      margin: 10px 0 10px 0;
+      padding: 5px 15px 5px 15px;
+      border: 0.5px solid blue;
+      border-radius: 2px;
+      position: relative;
+      font-size: 1rem;
+      color: blue;
+    }
+
+    .loginicon {
+      width: 24px;
+      height: 24px;
+      float: left;
+      position: absolute;
+      top: 50%;
+      left: 30%;
+      transform: translate(-50%, -50%);
+    }
+
+    .login p {
+      width: 61px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      color: blue;
+    }
+
+    .login1 {
+      width: 61px;
+      height: 24px;
+      margin: 10px 0 10px 0;
+      padding: 5px 15px 5px 15px;
+      border: 0.5px solid blue;
+      border-radius: 2px;
+      position: absolute;
+      left: 94%;
+      font-size: 1rem;
+      color: blue;
+    }
+
+    .loginicon1 {
+      width: 24px;
+      height: 24px;
+      float: left;
+      position: absolute;
+      top: 50%;
+      left: 30%;
+      transform: translate(-50%, -50%);
+    }
+
+    .login1 p {
+      width: 61px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      color: blue;
+    }
+
+    .content {
+      width: 87%;
+      height: 100%;
+      position: relative;
+      top: 112px;
+      left: 13%;
+      z-index: -3;
+    }
+
+    .ad {
+      width: 100%;
+      height: 250px;
+      background: #fff;
+      background-image: url("/icon/youtube\ premium.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: center;
+      z-index: -1;
+    }
+
+    .youtubepremium {
+      width: 350px;
+      height: auto;
+      position: absolute;
+      top: 30px;
+      left: 50px;
+    }
+
+    .promotion {
+      font-size: 1.5rem;
+      width: 400px;
+      height: auto;
+      position: absolute;
+      top: 70px;
+      left: 50px;
+      text-align: left;
+    }
+
+    .subscribenow {
+      font-size: 14px;
+      color: blue;
+      width: 70px;
+      border: 2px solid blue;
+      padding: 10px;
+      position: absolute;
+      top: 175px;
+      left: 50px;
+    }
+
+    .ad span {
+      font-size: 1.2rem;
+      margin: 10px;
+      padding: 0px 5px 0px 5px;
+      width: 20px;
+      height: 28px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .container {
+      width: calc(100% - 24px);
+      height: 120vh;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 12px;
+      position: absolute;
+      font-size: 0;
+      z-index: -2;
+    }
+
+    .col {
+      width: 22%;
+      height: 30%;
+      display: inline-block;
+      position: relative;
+      top: 300px;
+      left: 70px;
+      margin: 10px;
+      z-index: -2;
+    }
+
+    .cover {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .videoicon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-top: 1rem;
+      float: left;
+    }
+
+    .text {
+      width: 70%;
+      color: #606060;
+      font-size: 0.9rem;
+      margin-left: 15px;
+      float: left;
+    }
+
+    .text .title {
+      font-size: 1rem;
+      color: #000;
+      margin: 10px 0 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar1">
+    <img class="topbar1icon" src="/icon/list.png">
+    <img class="topbar1icon1" src="/icon/youtube.png">
+    <label for="searchbar">
+      <input class="searchbar" type="text" placeholder="搜尋">
+      <div class="searchbutton">
+        <img class="searchicon" src="icon/search.png">
+      </div>
+    </label>
+    <img class="voice" src="/icon/voice-recording.png">
+    <img class="menu1" src="/icon/menu_1.png">
+    <img class="menu2" src="/icon/menu.png">
+    <div class="login1">
+      <img class="loginicon1" src="icon/login.png">
+      <p>登入</p>
+    </div>
+  </div>
+  <div class="topbar2">
+    <span>全部</span>
+    <span>直播中</span>
+    <span>音樂</span>
+    <span>卡通</span>
+    <span>自然</span>
+    <span>觀光</span>
+    <span>動作冒險遊戲</span>
+    <span>寵物</span>
+    <span>最新上傳</span>
+  </div>
+  <div class="sidebar">
+    <div class="sidebarblock">
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">首頁</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">探索</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">訂閱內容</p>
+      </div>
+    </div>
+    <hr>
+    <div class="sidebarblock">
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">媒體庫</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">觀看紀錄</p>
+      </div>
+    </div>
+    <hr>
+    <div class="sidebarblock1">
+      <p>登入帳戶即可對影片表示喜歡、發布留言及訂閱頻道。</p>
+      <div class="login">
+        <img class="loginicon" src="icon/login.png">
+        <p>登入</p>
+      </div>
+    </div>
+    <hr>
+    <div class="sidebarblock">
+      <div class="sidetitleblock">
+        <p class="sidetitle1">YOUTUBE精選</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="/icon/music-player.png">
+        <p class="sidetitle">音樂</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="/icon/music-player.png">
+        <p class="sidetitle">體育</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="/icon/music-player.png">
+        <p class="sidetitle">遊戲</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="/icon/music-player.png">
+        <p class="sidetitle">電影</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="/icon/music-player.png">
+        <p class="sidetitle">新聞</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="/icon/music-player.png">
+        <p class="sidetitle">直播</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="/icon/music-player.png">
+        <p class="sidetitle">360度影片</p>
+      </div>
+    </div>
+    <hr>
+    <div class="sidebarblock">
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">瀏覽頻道</p>
+      </div>
+    </div>
+    <hr>
+    <div class="sidebarblock">
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">YouTube Premium</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">直播</p>
+      </div>
+    </div>
+    <hr>
+    <div class="sidebarblock">
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">設定</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">檢舉紀錄</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">說明</p>
+      </div>
+      <div class="sidebarlist">
+        <img class="icon" src="icon/home.png">
+        <p class="sidetitle">提供意見</p>
+      </div>
+    </div>
+    <hr>
+    <div class="copyright">
+      <p>簡介 媒體 版權 與我們聯絡<br>
+        創作者 廣告 開發人員</p>
+      <br>
+      <p>條款 隱私權 政策與安全性<br>
+        <b>Youtube</b> 運作方式 測試新功能
+      </p>
+      <br>
+      <p>© 2021 Google LLC</p>
+    </div>
+  </div>
+  <div class="content">
+    <div class="ad">
+      <img class="youtubepremium" src="icon/youtube premium icon.png">
+      <span>X</span>
+      <p class="promotion">盡情觀看所有喜愛的影片，不受任何廣告干擾</p>
+      <p class="subscribenow">立即訂閱</p>
+    </div>
+    <div class="container">
+      <div class="col">
+        <img class="cover" src="image/01.jpg">
+        <div class="bottombox">
+          <img class="videoicon" src="/image/01-1.jpg">
+          <div class="text">
+            <p class="title">母親節禮物也遲到太久了吧！！！ 【腦波弱開箱】EP75</p>
+            <p>好味小姐腦波弱<br>
+              觀看次數：15萬次 · 18小時前</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <img class="cover" src="image/02.jpg">
+        <div class="bottombox">
+          <img class="videoicon" src="/image/02-1.jpg">
+          <div class="text">
+            <p class="title">ghost choir 👻🎵</p>
+            <p>Louie Zong<br>
+              觀看次數：1514萬次 · 2年前</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <img class="cover" src="image/03.jpg">
+        <div class="bottombox">
+          <img class="videoicon" src="/image/03-1.jpg">
+          <div class="text">
+            <p class="title">【床編直播】EP06 人參導師中秋燭光法會</p>
+            <p>床編故事 Bad Time Stories<br>
+              觀看次數：2.3萬次 · 直播時間：4天前</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <img class="cover" src="image/04.jpg">
+        <div class="bottombox">
+          <img class="videoicon" src="/image/04-1.jpg">
+          <div class="text">
+            <p class="title">12樣好市多必買！員工私心推薦！不喜歡就去買自己喜歡吃的！不要...</p>
+            <p>內內 Nene<br>
+              觀看次數：25萬次 · 2週前</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <img class="cover" src="image/05.jpg">
+        <div class="bottombox">
+          <img class="videoicon" src="/image/05-1.jpg">
+          <div class="text">
+            <p class="title">最簡單的法式點心 香甜酥脆 - 貓舌頭餅乾│厭世甜點店</p>
+            <p>厭世甜點店<br>
+              觀看次數：3.2萬次 · 1天前</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <img class="cover" src="image/06.jpg">
+        <div class="bottombox">
+          <img class="videoicon" src="/image/06-1.jpg">
+          <div class="text">
+            <p class="title">【Joeman】iPhone 13詳細開箱！iPhone 13跟Pro到底要怎麼...</p>
+            <p>Joeman<br>
+              觀看次數：45萬次 · 1天前</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <img class="cover" src="image/07.jpg">
+        <div class="bottombox">
+          <img class="videoicon" src="/image/07-1.jpg">
+          <div class="text">
+            <p class="title">貓奴天堂！40隻緬因貓超嗨貓草趴 推車遛大貓 貓咪身體狗狗靈魂的...</p>
+            <p>昆蟲擾西吳沁婕Dee the bugb...<br>
+              觀看次數：7.9萬次 · 19小時前</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <img class="cover" src="image/08.jpg">
+        <div class="bottombox">
+          <img class="videoicon" src="/image/08-1.jpg">
+          <div class="text">
+            <p class="title">【實測】50元就能吃飽一餐？剩食APP🔥隨機下訂美食福袋</p>
+            <p>夠維根Go Vegan<br>
+              觀看次數：17萬次 · 2週前</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
